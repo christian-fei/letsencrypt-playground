@@ -15,10 +15,10 @@ Vagrant.configure('2') do |config|
   config.vm.network :private_network, ip: "192.168.11.20"
   config.vm.network "forwarded_port", guest: 80, host: 8080
 
-  config.vm.synced_folder "./", "/letsencrypt", type: "nfs", :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
+  config.vm.synced_folder "./", "/vagrant", type: "nfs", :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
 
   config.vm.provision "shell",
-    inline: "echo 'cd /letsencrypt' >> /home/vagrant/.bashrc"
+    inline: "echo 'cd /vagrant' >> /home/vagrant/.bashrc"
   config.vm.provision "shell",
     path: "provision.sh"
 end
