@@ -19,4 +19,6 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision "shell",
     inline: "echo 'cd /letsencrypt' >> /home/vagrant/.bashrc"
+  config.vm.provision "shell",
+    path: "provision.sh"
 end
